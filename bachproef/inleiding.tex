@@ -5,17 +5,18 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
 
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
+De toepassing van dimensioneringssystemen in magazijnomgevingen speelt een sleutelrol in de efficiënte werking van de logistiek \autocite{Cornell2015} \autocite{FreightSnap2019}. Het gebruik van computer vision-algoritmes biedt hierbij een oplossing om objectafmetingen te meten en processen te optimaliseren. Deze bachelorproef richt zich op het evalueren en verbeteren van bestaande computer vision-modellen voor dimensionering, waarbij specifiek wordt gekeken naar hun prestaties onder verschillende omstandigheden, zoals slechte verlichting en onscherpe beelden.
+
+Een belangrijk deel van dit onderzoek is het beoordelen van de robuustheid en accuraatheid van huidige algoritmes. Hierbij wordt onderzocht hoe generiek en noise-resistant bestaande modellen zijn en in hoeverre ze geoptimaliseerd kunnen worden voor magazijnomgevingen. Daarnaast wordt ook gekeken naar mogelijke methodes voor semi-automatische labeling van data, wat van cruciaal belang is voor het trainen van deze algoritmes. Dit omvat het gebruik van bestaande ground truths (verwachte output) en het ontwikkelen van een efficiënte manier om deze te verzamelen.
+
+De doelgroep voor dit onderzoek zijn bedrijven en IT-professionals die werken met dimensioneringssystemen in logistieke omgevingen. Deze bedrijven hebben behoefte aan accuraat werkende systemen om processen efficiënter en kosteneffectiever te maken.
+
+
+
+Het doel van dit onderzoek is om een gevalideerd en accuraat werkend model te ontwikkelen dat toepasbaar is in real-world magazijnomgevingen. Het resultaat is niet alleen een verbetering van bestaande algoritmes, maar ook een kader waarmee bedrijven deze kunnen evalueren en implementeren.
+
+
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
@@ -24,13 +25,30 @@ Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heef
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
+De centrale onderzoeksvraag is:
+\begin{quote}
+    \emph{"Welke computer vision-algoritmes zijn het meest
+    geschikt voor dimensioneringssystemen in
+    magazijnomgevingen, en onder welke omstandigheden
+    presteren ze optimaal?"}
+\end{quote}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+Deze vraag wordt ondersteund door deelvragen zoals:
+\begin{itemize}
+    \item Welke bestaande algoritmes zijn er voor dimensionering, en hoe presteren deze onder verschillende omstandigheden?
+    \item Welke datasets zijn geschikt om de prestaties van dimensioneringsalgoritmes te trainen en te valideren?
+    \item Hoe kunnen ground truths verkregen worden voor het trainen en evalueren van deze algoritmes?
+    \item Welke evaluatietechnieken zijn geschikt om de prestaties van de modellen objectief te meten?
+    \item Zijn er bestaande tools of technieken voor (semi-)automatische labeling die toegepast kunnen worden?
+    \item Hoe kunnen bestaande dimensioneringsalgoritmes worden aangepast om geïntegreerd te worden in mobiele apparaten zoals een heftruck?
+    \item Welke strategieën kunnen worden gebruikt om ruis of andere verstoringen in de inputdata effectief te onderdrukken?
+
+\end{itemize}
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+Het doel van dit onderzoek is om een gevalideerd en accuraat werkend model te ontwikkelen dat toepasbaar is in real-world magazijnomgevingen. Het resultaat is niet alleen een verbetering van bestaande algoritmes, maar ook een kader waarmee bedrijven deze kunnen evalueren en implementeren.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}

@@ -3,57 +3,83 @@
 \section{Inleiding}
 \label{sec:inleiding}
 
-De toepassing van dimensioneringssystemen in magazijnomgevingen is van cruciaal belang voor de efficiënte werking van de logistiek. Het meten van objecten door middel van computer vision-algoritmes biedt een krachtige oplossing om deze processen te verbeteren. Deze bachelorproef richt zich op de optimalisatie van reeds bestaande computer vision-algoritmes, specifiek gericht op het robuuster maken van dimensioneringssystemen, zelfs wanneer de ingevoerde data van mindere kwaliteit is, bijvoorbeeld door slechte verlichting of onscherpe camera's. Daarnaast onderzoekt dit onderzoek ook hoe een systeem automatisch kan worden bijgetraind met nieuwe data die tijdens het gebruik van een applicatie verzameld wordt, zodat het systeem flexibeler en efficiënter wordt in real-world magazijnomgevingen. 
+De toepassing van dimensioneringssystemen in magazijnomgevingen speelt een sleutelrol in de efficiënte werking van de logistiek \autocite{Cornell2015} \autocite{FreightSnap2019}. Het gebruik van computer vision-algoritmes biedt hierbij een oplossing om objectafmetingen te meten en processen te optimaliseren. Deze bachelorproef richt zich op het evalueren en verbeteren van bestaande computer vision-modellen voor dimensionering, waarbij specifiek wordt gekeken naar hun prestaties onder verschillende omstandigheden, zoals slechte verlichting en onscherpe beelden.
 
-De doelgroep voor dit onderzoek zijn IT-professionals en bedrijven die werken met dimensioneringssystemen in magazijnen en logistieke omgevingen. Het onderzoek richt zich op bedrijven die behoefte hebben aan efficiëntere en robuustere systemen voor het meten van objecten, bijvoorbeeld om optimale opslagplaats te bepalen.
+Een belangrijk deel van dit onderzoek is het beoordelen van de robuustheid en accuraatheid van huidige algoritmes. Hierbij wordt onderzocht hoe generiek en noise-resistant bestaande modellen zijn en in hoeverre ze geoptimaliseerd kunnen worden voor magazijnomgevingen. Daarnaast wordt ook gekeken naar mogelijke methodes voor semi-automatische labeling van data, wat van cruciaal belang is voor het trainen van deze algoritmes. Dit omvat het gebruik van bestaande ground truths (verwachte output) en het ontwikkelen van een efficiënte manier om deze te verzamelen.
 
-De centrale onderzoeksvraag van dit onderzoek gaat als volgt: 
+De doelgroep voor dit onderzoek zijn bedrijven en IT-professionals die werken met dimensioneringssystemen in logistieke omgevingen. Deze bedrijven hebben behoefte aan accuraat werkende systemen om processen efficiënter en kosteneffectiever te maken.
+
+De centrale onderzoeksvraag is:
 \begin{quote}
-    "Hoe kunnen computer vision-algoritmes geoptimaliseerd en automatisch bijgewerkt worden om dimensioneringssystemen nauwkeuriger en flexibeler te maken?"
+    \emph{"Welke computer vision-algoritmes zijn het meest
+    geschikt voor dimensioneringssystemen in
+    magazijnomgevingen, en onder welke omstandigheden
+    presteren ze optimaal?"}
 \end{quote}
 
-Het doel van dit onderzoek is om een werkend model te ontwikkelen dat toepasbaar is in real-life magazijnomgevingen. Het eindresultaat van deze bachelorproef bestaat uit een robuustere versie van het dimensioneringsalgoritme, een semi-geautomatiseerde trainingsapplicatie en een prototype dat uiteindelijk kan worden geïntegreerd in mobiele applicaties zoals een heftruck.
+Deze vraag wordt ondersteund door deelvragen zoals:
+\begin{itemize}
+    \item Welke bestaande algoritmes zijn er voor dimensionering, en hoe presteren deze onder verschillende omstandigheden?
+    \item Welke datasets zijn geschikt om de prestaties van dimensioneringsalgoritmes te trainen en te valideren?
+    \item Hoe kunnen ground truths verkregen worden voor het trainen en evalueren van deze algoritmes?
+    \item Welke evaluatietechnieken zijn geschikt om de prestaties van de modellen objectief te meten?
+    \item Zijn er bestaande tools of technieken voor (semi-)automatische labeling die toegepast kunnen worden?
+    \item Hoe kunnen bestaande dimensioneringsalgoritmes worden aangepast om geïntegreerd te worden in mobiele apparaten zoals een heftruck?
+    \item Welke strategieën kunnen worden gebruikt om ruis of andere verstoringen in de inputdata effectief te onderdrukken?
 
-%---------- Stand van zaken ---------------------------------------------------
+\end{itemize}
+
+Het doel van dit onderzoek is om een gevalideerd en accuraat werkend model te ontwikkelen dat toepasbaar is in real-world magazijnomgevingen. Het resultaat is niet alleen een verbetering van bestaande algoritmes, maar ook een kader waarmee bedrijven deze kunnen evalueren en implementeren.
+
+%---------- Literatuurstudie --------------------------------------------------
 
 \section{Literatuurstudie}
 \label{sec:literatuurstudie}
 
-Dimensioneringssystemen die gebruik maken van computer vision-technologie worden steeds vaker toegepast in magazijnen en andere logistieke omgevingen. Deze systemen maken gebruik van camera’s of sensoren om de afmetingen van objecten te schatten. \autocite{getcameras2024} Echter, een belangrijk probleem is dat de kwaliteit van de inputdata vaak niet voldoet aan de eisen van het algoritme. Onderzoek naar de robuustheid van computer vision-algoritmes toont aan dat slechte verlichting, onscherpte, en andere verstoringen de nauwkeurigheid van dimensioneringssystemen kunnen beïnvloeden \autocite{DeepCorrect2024}. Daarom is het belangrijk om algoritmes te ontwikkelen die niet alleen kunnen omgaan met hoge kwaliteit beelden, maar ook met mindere kwaliteit data.
+Dimensioneringssystemen op basis van computer vision worden steeds vaker ingezet in logistieke omgevingen vanwege hun potentieel om processen te automatiseren en te optimaliseren \autocite{getcameras2024}. Deze systemen gebruiken sensoren en camera’s om objectafmetingen te meten, maar hun prestaties worden sterk beïnvloed door de kwaliteit van de inputdata. Studies tonen aan dat factoren zoals slechte verlichting, onscherpte en andere vormen van ruis een aanzienlijke impact hebben op de nauwkeurigheid van de algoritmes \autocite{DeepCorrect2024}.
 
-Een andere uitdaging is de mogelijkheid om het systeem automatisch bij te trainen met nieuwe data. Dit kan bijvoorbeeld door gebruik te maken van technieken zoals transfer learning of online learning. Deze technieken stellen een model in staat om zich dynamisch aan te passen aan nieuwe omstandigheden zonder dat handmatig gelabelde data nodig is, wat de operationele efficiëntie verhoogt. Verschillende studies hebben aangetoond dat het automatisch bijtrainen van computer vision-modellen potentieel heeft voor toepassingen in dynamische omgevingen, zoals magazijnen, waar de omstandigheden voortdurend veranderen \autocite{AdaptLearn2024} \autocite{MDPI2024}.
+Er zijn verschillende modellen en technieken ontwikkeld om deze uitdagingen te adresseren. Data-augmentatie, ruisonderdrukking en training met diverse datasets zijn bewezen methoden om robuustheid en accuraatheid te verbeteren \autocite{AdaptLearn2024}. Echter, de specifieke toepassing in magazijnomgevingen – waar real-time prestaties en consistentie essentieel zijn – is nog niet uitgebreid onderzocht. Bovendien zijn technieken zoals automatische labeling en het gebruik van bestaande datasets (indien beschikbaar) cruciaal om het labelproces efficiënt en betrouwbaar te maken.
 
-Deze technieken zijn al in verschillende domeinen getest, maar de specifieke toepassing voor dimensionering in magazijnen, met de bijkomende eisen voor robuustheid en real-time prestaties, is nog niet uitgebreid onderzocht. Dit maakt het onderwerp van dit onderzoek relevant en vernieuwend.
+Een bijkomende uitdaging is de evaluatie van modellen. Effectieve evaluatietools en -methodologieën zijn noodzakelijk om objectieve conclusies te trekken over de prestaties van verschillende algoritmes in diverse omstandigheden.
 
 %---------- Methodologie ------------------------------------------------------
 
 \section{Methodologie}
 \label{sec:methodologie}
 
-Om de onderzoeksvraag te beantwoorden, zal dit onderzoek bestaan uit verschillende fasen, beginnend met een grondige analyse van de bestaande computer vision-algoritmes voor dimensionering. In de eerste fase wordt onderzocht welke algoritmes momenteel worden gebruikt en hoe deze geoptimaliseerd kunnen worden voor beelden met een mindere kwaliteit. Er wordt gekeken naar technieken zoals data-augmentatie en ruisonderdrukking om de prestaties van het algoritme te verbeteren.
+Om de onderzoeksvraag te beantwoorden, wordt dit onderzoek uitgevoerd in drie fasen:
+\begin{enumerate}
+    \item \textbf{Analyse van bestaande modellen:} In deze fase worden bestaande algoritmes geanalyseerd op hun prestaties bij variabele datakwaliteit. Hierbij wordt gekeken naar robuustheid, noise resistance en generieke toepasbaarheid. De evaluatie maakt hoofdzakelijk gebruik van publieke datasets.
+    
+    \item \textbf{Data-acquisitie en labeling:} Er wordt onderzocht hoe ground truths effectief verzameld kunnen worden. Dit kan door gebruik te maken van bestaande labels of door semi-geautomatiseerde labelingstechnieken toe te passen. Hierbij wordt rekening gehouden met de uitdagingen van real-world toepassingen. Ook worden bestaande datasets geëvalueerd die geschikt kunnen zijn om de prestaties van dimensioneringsalgoritmes te trainen en te evaluateren.
 
-In de tweede fase wordt een semi-geautomatiseerde trainingsapplicatie ontwikkeld die het mogelijk maakt om het model automatisch bij te trainen met nieuwe data die verzameld wordt tijdens het gebruik van de applicatie. Het systeem wordt ontworpen om in real-time nieuwe gegevens te verwerken en het model dynamisch bij te werken zonder tussenkomst van een gebruiker. 
+    \item \textbf{Ontwikkeling en evaluatie:} Op basis van de bevindingen in de eerste twee fasen wordt een verbeterd algoritme ontwikkeld. Het algoritme wordt geëvalueerd met gebruik van specifieke testen, zoals:
+    \begin{itemize}
+        \item Prestaties bij verschillende licht- en ruisomstandigheden.
+        \item Accuraatheid en consistentie bij verschillende objectformaten.
+        \item Efficiëntie in real-time toepassingen.
+    \end{itemize}
+\end{enumerate}
 
-De laatste fase omvat het testen van het systeem in verschillende magazijnomgevingen, waarbij de applicatie eerst op mobiele telefoons wordt getest en vervolgens geïntegreerd kan worden op een heftruck voor real-time gebruik. Dit zorgt ervoor dat het systeem in verschillende omgevingen en omstandigheden kan functioneren.
-
-De gebruikte onderzoekstechnieken zullen een literatuurstudie, experimenten met computer vision-algoritmes en het ontwikkelen van een prototype voor de trainingsapplicatie omvatten. Voor de ontwikkeling van het systeem worden tools zoals Python, TensorFlow en verschillende hardwarecomponenten (vooral camera’s op mobiele telefoons) ingezet.
-
-De verwachte tijdlijn is als volgt:
-\begin{itemize}
-    \item Fase 1: Analyse van bestaande algoritmes (1/2 maand)
-    \item Fase 2: Ontwikkeling van de trainingsapplicatie en optimalisatie van het algoritme (2 maanden)
-    \item Fase 3: Testen van het systeem in een magazijnomgeving (1 maand)
-    \item Fase 4: Integratie van het systeem in een stand-alone applicatie en testen op een heftruck (2 maanden)
-\end{itemize}
+De onderzoeksaanpak omvat een combinatie van literatuurstudie, experimenten met bestaande algoritmes, en het ontwikkelen van een gevalideerd prototype. Tools zoals Python, Torch en OpenCV worden ingezet voor de ontwikkeling en evaluatie.
 
 %---------- Verwachte resultaten ----------------------------------------------
 
-\section{Verwacht resultaat, conclusie}
+\section{Verwachte resultaten en impact}
 \label{sec:verwachte_resultaten}
 
-De verwachte resultaten van dit onderzoek zijn een geoptimaliseerd en robuust computer vision-algoritme dat in staat is om dimensioneringen nauwkeurig te schatten, zelfs bij mindere kwaliteit beelden. Daarnaast wordt er een semi-geautomatiseerde trainingsapplicatie ontwikkeld die het mogelijk maakt om het model automatisch bij te trainen met nieuwe data. Het prototype van de stand-alone applicatie zal later op een heftruck kunnen worden geïntegreerd.
+De verwachte resultaten zijn:
+\begin{itemize}
+    \item Een gevalideerd en accuraat computer vision-algoritme dat objecten betrouwbaar kan dimensioneren, zelfs bij mindere beeldkwaliteit.
+    \item Een effectief kader voor het verkrijgen van ground truths en het evalueren van algoritmes.
+    \item Een prototype dat testresultaten valideert in real-world vaak uitdagende magazijnomstandigheden, zonder impact op de veiligheid van processen zoals integratie op heftrucks.
+\end{itemize}
 
-De meerwaarde van dit onderzoek voor de doelgroep is aanzienlijk. Door het algoritme en de mogelijkheid om het systeem automatisch bij te trainen, kunnen bedrijven hun opslagprocessen efficiënter maken en kosten verlagen. Bovendien biedt het onderzoek een oplossing die eenvoudig geïntegreerd kan worden in bestaande werkprocessen, zoals het gebruik van heftrucks in magazijnen. 
+De meerwaarde voor bedrijven ligt in een verhoogde accuraatheid en betrouwbaarheid van dimensioneringssystemen, wat leidt tot efficiëntere processen en lagere kosten. Het onderzoek biedt bovendien een fundamentele basis voor verdere ontwikkeling in dit domein.
 
-De resultaten zullen niet alleen bijdragen aan de verbetering van dimensioneringssystemen in het algemeen, maar kunnen ook dienen als basis voor verdere ontwikkelingen in automatische bijtraining en adaptieve machine learning-systemen voor andere toepassingen of bedrijfsomgevingen.
-
+\vspace{1cm}
+\noindent \textbf{Belangrijke kanttekeningen:}
+\begin{itemize}
+    \item De focus ligt op haalbare en praktische implementaties; theoretische concepten zoals volledig automatische bijtraining worden vermeden.
+    \item Het prototype wordt strikt getest op veiligheid en compatibiliteit met logistieke processen.
+\end{itemize}
